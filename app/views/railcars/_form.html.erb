@@ -1,0 +1,48 @@
+<%= form_with(model: railcar, local: true) do |form| %>
+  <% if railcar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(railcar.errors.count, "error") %>
+        prohibited this railcar from being saved:</h2>
+
+      <ul>
+      <% railcar.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :people_id %>
+    <%= form.text_field :people_id, id: :railcar_people_id, :required => true,
+    :pattern => '\d{8,10}', :maxlength => 10, :minlength => 8 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :placa %>
+    <%= form.text_field :placa, id: :railcar_placa, :required => true,
+    :maxlength => 6, :minlength => 5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :marca %>
+    <%= form.text_field :marca, id: :railcar_marca, :maxlength => 20,
+     :minlength => 3, :pattern => '[:alpha:]{,20}'%>
+  </div>
+
+  <div class="field">
+    <%= form.label :modelo %>
+    <%= form.text_field :modelo, id: :railcar_modelo,:maxlength => 20,
+     :minlength => 3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo %>
+    <%= form.select :tipo, options_for_select(['MOTO','CARRO','BUS']),
+    id: :railcar_tipo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

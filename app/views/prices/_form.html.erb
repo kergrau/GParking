@@ -1,0 +1,42 @@
+<%= form_with(model: price, local: true) do |form| %>
+  <% if price.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(price.errors.count, "error") %> prohibited this price from being saved:</h2>
+
+      <ul>
+      <% price.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :valor %>
+    <%= form.text_field :valor, id: :price_valor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo_carro %>
+    <%= form.text_field :tipo_carro, id: :price_tipo_carro %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hora_inicio %>
+    <%= form.time_select :hora_inicio, id: :price_hora_inicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hora_fin %>
+    <%= form.time_select :hora_fin, id: :price_hora_fin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado %>
+    <%= form.check_box :estado, id: :price_estado %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

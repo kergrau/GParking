@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>People:</strong>
+  <%= @railcar.people_id %>
+</p>
+
+<p>
+  <strong>Placa:</strong>
+  <%= @railcar.placa %>
+</p>
+
+<p>
+  <strong>Marca:</strong>
+  <%= @railcar.marca %>
+</p>
+
+<p>
+  <strong>Modelo:</strong>
+  <%= @railcar.modelo %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @railcar.tipo %>
+</p>
+
+<%= link_to 'Edit', edit_railcar_path(@railcar) %> |
+<%= link_to 'Back', railcars_path %>

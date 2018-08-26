@@ -1,0 +1,67 @@
+<%= form_with(model: person, local: true) do |form| %>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person
+         from being saved:</h2>
+
+      <ul>
+      <% person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre1 %>
+    <%= form.text_field :nombre1, id: :person_nombre1, :required => true,
+    :maxlength => 20, :pattern => '[:alpha:]{,20}' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombre2 %>
+    <%= form.text_field :nombre2, id: :person_nombre2, :maxlength => 20,
+    :pattern => '[:alpha:]{,20}' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellido1 %>
+    <%= form.text_field :apellido1, id: :person_apellido1, :required => true,
+    :maxlength => 20, :pattern => '[:alpha:]{,20}' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellido2 %>
+    <%= form.text_field :apellido2, id: :person_apellido2, :maxlength => 20,
+    :pattern => '[:alpha:]{,20}' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :"DNI" %>
+    <%= form.text_field :dni, id: :person_dni, :required => true,
+    :maxlength => 10, :minlength => 8, :pattern => '\d{8,10}' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :correo %>
+    <%= form.email_field :correo, id: :person_correo, :required => true,
+    :maxlength => 60, :size => 20 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefono %>
+    <%= form.telephone_field :telefono, id: :person_telefono,
+    :pattern => '\d{7,10}', :placeholder => "solo numeros", :maxlength => 10,
+    :minlength => 7%>
+  </div>
+
+  <div class="field">
+    <%= form.label :direccion %>
+    <%= form.text_field :direccion, id: :person_direccion, :maxlength => 200,
+    :size => 30 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+module RailcarsHelper
+end

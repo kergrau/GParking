@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  valor: 9.99
+  tipo_carro: MyString
+  hora_inicio: 2018-01-07 10:48:36
+  hora_fin: 2018-01-07 10:48:36
+  estado: false
+
+two:
+  valor: 9.99
+  tipo_carro: MyString
+  hora_inicio: 2018-01-07 10:48:36
+  hora_fin: 2018-01-07 10:48:36
+  estado: false

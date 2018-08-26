@@ -1,0 +1,34 @@
+<%= form_with(model: record, local: true) do |form| %>
+  <% if record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(record.errors.count, "error") %>
+        prohibited this record from being saved:</h2>
+
+      <ul>
+      <% record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :railcars_id %>
+    <%= form.text_field :railcars_id, id: :record_railcars_id,
+    :required => true, :maxlength => 7, :minlength => 5 %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :horafinal, id: :record_horafinal, :hidden => true,
+    :value => Time.now %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estado %>
+    <%= form.check_box :estado, id: :record_estado, :checked => true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

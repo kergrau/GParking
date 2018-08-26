@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Railcars:</strong>
+  <%= @record.railcars_id %>
+</p>
+
+<p>
+  <strong>Horafinal:</strong>
+  <%= @record.horafinal %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @record.estado %><br>
+  <%= (@record.horafinal - @record.created_at) / 60%>
+  <%= @sum_precio.inspect%>
+  <%= link_to 'prueba', prueba_records_path(@record) %>
+</p>
+
+<%= link_to 'Edit', edit_record_path(@record) %>
+<%= link_to 'Back', records_path %>

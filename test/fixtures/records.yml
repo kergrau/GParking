@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  railcars_id: MyString
+  horafinal: MyString
+  estado: false
+
+two:
+  railcars_id: MyString
+  horafinal: MyString
+  estado: false
