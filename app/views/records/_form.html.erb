@@ -19,8 +19,13 @@
   </div>
 
   <div class="field">
-    <%= form.text_field :horafinal, id: :record_horafinal, :hidden => true,
-    :value => Time.now %>
+    <%= form.label :horainicio_id %>
+    <%= form.datetime_field :horainicio, id: :record_horafinal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :horafinal_id %>
+    <%= form.datetime_field :horafinal, id: :record_horafinal %>
   </div>
 
   <div class="field">

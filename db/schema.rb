@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180107154836) do
+ActiveRecord::Schema.define(version: 20190419164617) do
+
+  create_table "invoice_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "invoices_id"
+    t.string "ind_inicio"
+    t.string "ind_fin"
+    t.float "ind_minutos", limit: 24
+    t.float "ind_valor", limit: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invoices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "records_id", limit: 6
+    t.string "in_number", limit: 6
+    t.date "in_date"
+    t.time "in_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "nombre1", limit: 20
@@ -51,6 +70,18 @@ ActiveRecord::Schema.define(version: 20180107154836) do
     t.boolean "estado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "horainicio"
+    t.string "rec_type", limit: 1
+    t.string "spaces_id", limit: 7
+  end
+
+  create_table "spaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "sp_floor", limit: 2
+    t.integer "sp_number", limit: 3
+    t.boolean "sp_state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "sp_type", limit: 7
   end
 
 end

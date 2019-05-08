@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks to trust in GParkin</h1>
+    <p>
+      Below you'll see your invoice <br>
+    </p>
+
+    <% @items.each do |elemento|%>
+      <strong> <%= elemento[0].round %> minutos </strong>
+      <strong> <%= "En el horario de #{elemento[1]} a
+      #{elemento[2]}"%> <strong> <br>
+      <strong> <%= "Esto te costo #{elemento[3].round}"%> </strong>
+      <br>
+    <% end %>
+
+    <p>Have a great day and see you soon!</p>
+
+  </body>
+</html>

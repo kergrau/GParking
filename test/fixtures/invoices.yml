@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  records_id: MyString
+  in_number: MyString
+  in_date: 2019-04-05
+  in_time: 2019-04-05 13:42:06
+
+two:
+  records_id: MyString
+  in_number: MyString
+  in_date: 2019-04-05
+  in_time: 2019-04-05 13:42:06

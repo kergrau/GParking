@@ -24,18 +24,14 @@ class RecordsController < ApplicationController
   # POST /records
   # POST /records.json
   def create
-=begin
-      Debes asociar las clases en rails para ahorrarte la empanada que estas
-      haciendo con esta consulta que rails te la ahorra cuando asocias el
-      asunto. De uno a muchos Persons -> Railscars y Railscars -> Records.
-=end
+
     @record = Record.new(record_params)
     railcars_id = Railcar.select([Railcar.arel_table[:id],
     Railcar.arel_table[:tipo]]).
     where(Railcar.arel_table[:placa].eq(@record.railcars_id))
 
     if railcars_id.blank?
-      @record.railcars_id =''
+      @record.railcars_id = ''
     else
       @record.railcars_id = railcars_id[0]['id']
     end
@@ -65,36 +61,6 @@ class RecordsController < ApplicationController
     end
   end
 
-  def prueba
-    #Esta es la consulta que me permte traer los precios.
-      @consulta = Record.connection.select_all(
-        "SELECT prices.valor, prices.hora_inicio, prices.hora_fin
-         FROM prices
-         WHERE prices.estado = true AND prices.tipo_carro = (
-           SELECT railcars.tipo
-    	     FROM railcars INNER JOIN records ON railcars.id = records.railcars_id
-    	     WHERE records.id = 10)").to_hash
-
-     tiempo_facturar = (@record.horafinal - @record.created_at) / 60
-     sum_precio = 0
-
-     #Esta es la parte ddonde recorro los registros de precios y voy sumando
-     @consulta.each do |con|
-       if con.first
-         minutos = (con.hora_fin - @record.created_at) / 60
-       elsif con.last
-         minutos = (@record.horafinal - con.hora_inicio) / 60
-       else
-         minutos = (con.hora_fin - con.hora_inicio) / 60
-       end
-       @sum_precio = @sum_precio + minutos * con.valor
-       tiempo_facturar = tiempo_facturar - minutos
-     end
-
-       if tiempo_facturar > 0
-         @sum_precio = tiempo_facturar * 100 + @sum_precio
-       end
-  end
 
   # DELETE /records/1
   # DELETE /records/1.json
@@ -114,6 +80,7 @@ class RecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
-      params.require(:record).permit(:railcars_id, :horafinal, :estado)
+      params.require(:record).permit(:railcars_id, :horafinal, :estado,
+        :horainicio)
     end
 end

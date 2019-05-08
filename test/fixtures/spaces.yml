@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sp_floor: 
+  sp_number: 
+  sp_state: false
+
+two:
+  sp_floor: 
+  sp_number: 
+  sp_state: false
