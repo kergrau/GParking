@@ -15,15 +15,5 @@
   <%= @record.estado %><br>
 </p>
 
-<% detalle = @record.facturacion %>
-<% detalle.each do |elemento|%>
-  <strong> <%= elemento[0].round %> minutos </strong>
-  <strong> <%= "En el horario de #{elemento[1]} a
-  #{elemento[2]}"%> <strong> <br>
-  <strong> <%= "Esto te costo #{elemento[3].round}"%> </strong>
-  <br>
-<% end %>
-
-
 <%= link_to 'Edit', edit_record_path(@record) %>
 <%= link_to 'Back', records_path %>

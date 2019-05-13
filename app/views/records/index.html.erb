@@ -27,5 +27,25 @@
 </table>
 
 <br>
-
 <%= link_to 'New Record', new_record_path %>
+
+
+<% spaces = Space.new%>
+<p>Espacios dispnibles para carros =
+<%= spaces.espacios_disponibles_carros%> </p>
+
+<br>
+
+<p>Espacios ocupados por carros =
+<%= spaces.espacios_ocupados_carros%> </p>
+
+<br>
+
+<p>Espacios dispnibles para motos =
+<%= spaces.espacios_disponibles_motos%> </p>
+
+<br>
+
+<p>Espacios ocupados por motos =
+<%= spaces.espacios_ocupados_motos%> </p>
+

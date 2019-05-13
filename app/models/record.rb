@@ -1,13 +1,15 @@
 class Record < ApplicationRecord
   validates :railcars_id, presence: true, uniqueness: { scope: :estado},
   :on => :create
+  validates :spaces_id, presence: {message: "No hay espacio en este momento"}, on: :create
   before_update :facturacion
   after_validation :tipo_reserva, on: :create
-  after_validation :asignar_espacio, on: :create
+  before_validation :asignar_espacio, on: :create
   after_validation :hora_inicio, on: :create, unless: :tipo_inicio
   after_validation :hora_fin, on: :update, unless: :tipo_fin
   after_validation :mayus_minus, :on => [:create, :update]
   after_create :crear_factura, :on => :create
+  after_create :notificar_espacio, :on => :create
 
   def buscar_correo
     correo = Person.connection.select_all(
@@ -35,7 +37,7 @@ class Record < ApplicationRecord
       inDetail.iterador_horario(totalti, contatiempo, sum_precio = 0,
        items = [], inDetail.consulta(self.id), self.horafinal)
       inDetail.detalle_factura(invoice.buscar_factura(self.id), items)
-      #InvoiceMailer.welcome_email(buscar_correo, items).deliver_now
+      InvoiceMailer.welcome_email(buscar_correo, items).deliver_now
     end # Condicional
   end # Metodo
 
@@ -79,12 +81,16 @@ class Record < ApplicationRecord
   def asignar_espacio
     space = Space.new
     self.spaces_id = space.asignar_espacio(self.railcars_id)
-    space.ocupar_espacio(self.spaces_id)
+    space.ocupar_espacio(self.spaces_id) unless self.spaces_id.blank?
+  end
+
+  def notificar_espacio
+    space = Space.new
+    space.notificar_ocupacion(buscar_correo, self.spaces_id)
   end
 
   def desasignar_espacio
     space = Space.new
-    p self.spaces_id
     space.desocupar_espacio(self.spaces_id)
   end
 

@@ -1,4 +1,4 @@
-class InvoiceMailer < ApplicationMailer
+class YourSpaceMailer < ApplicationMailer
 
   self.smtp_settings = {
     address:              'SMTP.Office365.com',
@@ -11,8 +11,10 @@ class InvoiceMailer < ApplicationMailer
 
   default from: 'synapkg@outlook.com'
 
-  def welcome_email(correo, items)
-    @items = items
-    mail(to: correo, subject: 'Your Invoice')
+  def your_parking(correo, numspace, floorspace)
+    @numspace = numspace
+    @floorspace = floorspace
+    mail(to: correo, subject: 'Your car parking')
   end
+
 end
