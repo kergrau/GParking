@@ -25,13 +25,6 @@ class RailcarsController < ApplicationController
   # POST /railcars.json
   def create
     @railcar = Railcar.new(railcar_params)
-    #people_id = Person.select(Person.arel_table[:id]).
-    #where(Person.arel_table[:dni].eq(@railcar.people_id))
-    #if people_id.blank?
-    #  @railcar.people_id =''
-    #else
-    #  @railcar.people_id = people_id[0]['id']
-    #end
 
     respond_to do |format|
       if @railcar.save

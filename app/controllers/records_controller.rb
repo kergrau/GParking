@@ -26,15 +26,6 @@ class RecordsController < ApplicationController
   def create
 
     @record = Record.new(record_params)
-    railcars_id = Railcar.select([Railcar.arel_table[:id],
-    Railcar.arel_table[:tipo]]).
-    where(Railcar.arel_table[:placa].eq(@record.railcars_id))
-
-    if railcars_id.blank?
-      @record.railcars_id = ''
-    else
-      @record.railcars_id = railcars_id[0]['id']
-    end
 
     respond_to do |format|
       if @record.save
