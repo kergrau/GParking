@@ -26,7 +26,6 @@ class Space < ApplicationRecord
         WHERE railcars.id = #{id}
       ) LIMIT 1").to_hash
     if spaces_id.blank? then nil else spaces_id[0]['id'] end
-    #p spaces_id[0]['id']
   end
 
   # Esto debe ser par las graficas
