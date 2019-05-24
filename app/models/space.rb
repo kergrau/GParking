@@ -8,7 +8,7 @@ class Space < ApplicationRecord
   def notificar_ocupacion(correo, id)
     spaces = numero_espacio(id)
     YourSpaceMailer.your_parking(correo, spaces.sp_number,
-    spaces.sp_floor).deliver_now
+    spaces.sp_floor).deliver_later
   end
 
   def desocupar_espacio(id)

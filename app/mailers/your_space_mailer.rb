@@ -11,9 +11,19 @@ class YourSpaceMailer < ApplicationMailer
 
   default from: 'synapkg@outlook.com'
 
+  # Send a mail with the position of railcar in the parking
   def your_parking(correo, numspace, floorspace)
     @numspace = numspace
     @floorspace = floorspace
+    mail(to: correo, subject: 'Your car parking')
+  end
+
+  # Send a mail with a reminder to exit a railcar
+  def exit_reminder_mail(horafinal, correo, placa, numspace, floorspace)
+    @numspace = numspace
+    @floorspace = floorspace
+    @horafinal = horafinal
+    @placa = placa
     mail(to: correo, subject: 'Your car parking')
   end
 
