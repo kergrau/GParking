@@ -1,6 +1,6 @@
 class InvoiceDetail < ApplicationRecord
   def detalle(minutos, inicio, fin, valor)
-    return minutos, inicio, fin, valor
+    return minutos, inicio.to_s, fin.to_s, valor
   end
 
   def recolectar(elemento, colector)

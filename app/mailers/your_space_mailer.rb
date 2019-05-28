@@ -22,9 +22,9 @@ class YourSpaceMailer < ApplicationMailer
   def exit_reminder_mail(horafinal, correo, placa, numspace, floorspace)
     @numspace = numspace
     @floorspace = floorspace
-    @horafinal = horafinal
+    @horafinal = ((Time.parse(horafinal) - Time.now) / 60).to_i
     @placa = placa
-    mail(to: correo, subject: 'Your car parking')
+    mail(to: correo, subject: 'Your car reminder')
   end
 
 end

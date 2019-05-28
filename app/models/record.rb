@@ -1,5 +1,3 @@
-require 'date'
-
 class Record < ApplicationRecord
   validates :spaces_id, presence: {message: "No hay espacio en este momento"}, on: :create
   validates :railcars_id, presence: {message: "Numero de placa inexistente
@@ -53,7 +51,8 @@ class Record < ApplicationRecord
       inDetail.iterador_horario(totalti, contatiempo, sum_precio = 0,
        items = [], inDetail.consulta(self.id), self.horafinal)
       inDetail.detalle_factura(invoice.buscar_factura(self.id), items)
-      InvoiceMailer.welcome_email(buscar_correo, items).deliver_now
+      #p colector = items.join(", ")
+      InvoiceMailer.welcome_email(buscar_correo, items).deliver_later
     end # Condicional
   end # Metodo
 
@@ -63,23 +62,17 @@ class Record < ApplicationRecord
   end
 
   def tiempo_salida
-    p media_hora = self.horafinal - 1800
-    #if Time.now < media_hora
-    #p  tiempo = self.horafinal
-    #else
-    # p tiempo = self.horafinal - media_hora     
-    #end
+    salida = self.horafinal - Time.now
+    return ((salida - 1800) / 60).to_i
   end
 
   def crear_recordatorio_salida
     placa = Railcar.select(:placa).where(id: railcars_id)
     espacio = Space.select(:sp_number, :sp_floor).where(id: spaces_id)
-    p tiempo = tiempo_salida
-    ExitReminderJob.set(wait_until: Time.now.tomorrow).perform_later(tiempo,
-    buscar_correo, placa[0].placa, espacio[0].sp_number, espacio[0].sp_floor)
-    #ExitReminderJob.perform_now(tiempo,
-    #YourSpaceMailer.exit_reminder_mail(tiempo, buscar_correo, placa[0].placa,
-    #espacio[0].sp_number, espacio[0].sp_floor).deliver_now
+    
+    YourSpaceMailer.exit_reminder_mail(self.horafinal.to_s, buscar_correo,
+    placa[0].placa, espacio[0].sp_number, espacio[0].sp_floor).deliver_later(
+    wait_until: tiempo_salida.minutes.from_now)
   end
 
   def horas # Con este me definira las horas de inicio y final.
