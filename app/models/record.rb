@@ -2,16 +2,16 @@ class Record < ApplicationRecord
   validates :spaces_id, presence: {message: "No hay espacio en este momento"}, on: :create
   validates :railcars_id, presence: {message: "Numero de placa inexistente
   o en blanco"}, on: :create
-  before_update :facturacion
+  #before_update :facturacion
   after_validation :tipo_reserva, on: :create
   before_validation :placa_a_id, on: :create
   before_validation :asignar_espacio, on: :create
   after_validation :hora_inicio, on: :create, unless: :tipo_inicio
   after_validation :hora_fin, on: :update, unless: :tipo_fin
   after_validation :mayus_minus, :on => [:create, :update]
-  after_create :crear_factura, :on => :create
-  after_create :notificar_espacio, :on => :create
-  after_create :crear_recordatorio_salida, on: :create, if: :tipo_fin
+  #after_create :crear_factura, :on => :create
+  #after_create :notificar_espacio, :on => :create
+  #after_create :crear_recordatorio_salida, on: :create, if: :tipo_fin
 
   def placa_a_id
     railcars_id = Railcar.select([Railcar.arel_table[:id],

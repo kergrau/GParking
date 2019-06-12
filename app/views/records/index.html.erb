@@ -1,51 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h1> Records</h1>
 
-<h1>Records</h1>
+<%= render 'record', record: @record %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Railcars</th>
-      <th>Horafinal</th>
-      <th>Estado</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @records.each do |record| %>
-      <tr>
-        <td><%= record.railcars_id %></td>
-        <td><%= record.horafinal %></td>
-        <td><%= record.estado %></td>
-        <td><%= link_to 'Show', record %></td>
-        <td><%= link_to 'Edit', edit_record_path(record) %></td>
-        <td><%= link_to 'Destroy', record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 <%= link_to 'New Record', new_record_path %>
 
 
 <% spaces = Space.new%>
 <p>Espacios dispnibles para carros =
 <%= spaces.espacios_disponibles_carros%> </p>
-
-<br>
-
-<p>Espacios ocupados por carros =
-<%= spaces.espacios_ocupados_carros%> </p>
-
 <br>
 
 <p>Espacios dispnibles para motos =
 <%= spaces.espacios_disponibles_motos%> </p>
-
 <br>
-
-<p>Espacios ocupados por motos =
-<%= spaces.espacios_ocupados_motos%> </p>
-

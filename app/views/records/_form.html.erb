@@ -12,28 +12,41 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :railcars_id %>
+  <form>
+  <div class="form-icons">
+    <h4>Sign Up</h4>
+
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-car"></i>
+      </span>
     <%= form.text_field :railcars_id, id: :record_railcars_id,
-    :required => true, :maxlength => 7, :minlength => 5 %>
-  </div>
+    :required => true, :maxlength => 7, :minlength => 5,
+    class:"input-group-field", placeholder: 'License Plate' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :horainicio_id %>
-    <%= form.datetime_field :horainicio, id: :record_horafinal %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-compass"></i>
+      </span>
+    <%= form.datetime_field :horainicio, id: :record_horafinal,
+    class:"input-group-field", placeholder: 'Start AAAA-MM-DDTHH:MM:SS' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :horafinal_id %>
-    <%= form.datetime_field :horafinal, id: :record_horafinal %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-compass"></i>
+      </span>
+    <%= form.datetime_field :horafinal, id: :record_horafinal,
+    class:"input-group-field", placeholder: 'Final AAAA-MM-DDTHH:MM:SS' %>
+    </div>
 
-  <div class="field">
+    <div class="field">
     <%= form.label :estado %>
     <%= form.check_box :estado, id: :record_estado, :checked => true %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <button class="button expanded">Sign Up/Update</button>
+</form>
+
 <% end %>

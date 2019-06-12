@@ -1,10 +1,12 @@
 class RecordsController < ApplicationController
-  before_action :set_record, only: [:show, :edit, :update, :destroy]
+  before_action :set_record, only: [:show, :edit, :update, :destroy, :take_out]
 
   # GET /records
   # GET /records.json
   def index
-    @records = Record.where(estado: true)
+    @records = Record.select(:id, :placa, :estado, :railcars_id, :horainicio,
+    :horafinal).joins("INNER JOIN railcars ON railcars.id = 
+    records.railcars_id").where(estado: true)
   end
 
   # GET /records/1

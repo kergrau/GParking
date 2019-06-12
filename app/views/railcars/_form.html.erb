@@ -12,30 +12,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :people_id %>
+  <form>
+  <div class="form-icons">
+    <h4>Sign Up</h4>
+
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
     <%= form.text_field :people_id, id: :railcar_people_id, :required => true,
     :placeholder => 'DNI', :pattern => '\d{8,10}', :maxlength => 10,
-    :minlength => 8 %>
-  </div>
+    :minlength => 8, class:"input-group-field" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :placa %>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-car"></i>
+      </span>
     <%= form.text_field :placa, id: :railcar_placa, :required => true,
-    :maxlength => 6, :minlength => 5 %>
-  </div>
+    :maxlength => 6, :minlength => 5, class:"input-group-field",
+    placeholder: 'License Plate' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :marca %>
-    <%= form.text_field :marca, id: :railcar_marca, :maxlength => 20,
-     :minlength => 3, :pattern => '[:alpha:]{,20}'%>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-info"></i>
+      </span>
+      <%= form.text_field :marca, id: :railcar_marca, :maxlength => 20,
+      :minlength => 3, :pattern => '[:alpha:]{,20}', class:"input-group-field",
+      placeholder: 'Car Brand'%>
+    </div>
 
-  <div class="field">
-    <%= form.label :modelo %>
-    <%= form.text_field :modelo, id: :railcar_modelo,:maxlength => 20,
-     :minlength => 3 %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-info"></i>
+      </span>
+      <%= form.text_field :modelo, id: :railcar_modelo,:maxlength => 20,
+     :minlength => 3, class:"input-group-field", placeholder: 'Car Model' %>
+    </div>
 
   <div class="field">
     <%= form.label :tipo %>
@@ -43,7 +57,6 @@
     id: :railcar_tipo %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <button class="button expanded">Sign Up/Update</button>
+</form>
 <% end %>

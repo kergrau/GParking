@@ -1,0 +1,49 @@
+<!doctype html>
+  <html class="no-js" lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Gparking</title>
+  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+  </head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">Yeti Agency</li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><%= link_to 'People', people_path %></li>
+      <li><%= link_to 'Railcars', railcars_path %></li>
+      <li><%= link_to 'Records', records_path %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout large primary">
+  <div class="row column text-center">
+    <h1>GParking</h1>
+  </div>
+</div>
+<div class="row" id="content">
+  <div class="medium-8 columns">
+
+
+    <%= render "records/record" %>
+    <%= link_to 'Enter Car', new_record_path %>
+  </div>
+  <%= render "welcome/side_ocupation" %>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+<script>
+  $(document).foundation();
+  new WelcomeView();
+</script>
+
+</body>
+</html>

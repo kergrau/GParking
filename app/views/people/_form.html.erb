@@ -12,56 +12,80 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :nombre1 %>
-    <%= form.text_field :nombre1, id: :person_nombre1, :required => true,
-    :maxlength => 20, :pattern => '[:alpha:]{,20}' %>
-  </div>
+<form>
+  <div class="form-icons">
+    <h4>Sign Up</h4>
 
-  <div class="field">
-    <%= form.label :nombre2 %>
-    <%= form.text_field :nombre2, id: :person_nombre2, :maxlength => 20,
-    :pattern => '[:alpha:]{,20}' %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <%= form.text_field :nombre1, id: :person_nombre1, :required => true,
+    :maxlength => 20, :pattern => '[:alpha:]{,20}', class:"input-group-field",
+     placeholder: 'First Name' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :apellido1 %>
-    <%= form.text_field :apellido1, id: :person_apellido1, :required => true,
-    :maxlength => 20, :pattern => '[:alpha:]{,20}' %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <%= form.text_field :nombre2, id: :person_nombre2,
+      :maxlength => 20, :pattern => '[:alpha:]{,20}', class:"input-group-field",
+      placeholder: 'Second Name' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :apellido2 %>
-    <%= form.text_field :apellido2, id: :person_apellido2, :maxlength => 20,
-    :pattern => '[:alpha:]{,20}' %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <%= form.text_field :apellido1, id: :apellido1, :required => true,
+      :maxlength => 20, :pattern => '[:alpha:]{,20}', class:"input-group-field",
+      placeholder: 'Surname' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :"DNI" %>
-    <%= form.text_field :dni, id: :person_dni, :required => true,
-    :maxlength => 10, :minlength => 8, :pattern => '\d{8,10}' %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <%= form.text_field :apellido2, id: :apellido2,
+      :maxlength => 20, :pattern => '[:alpha:]{,20}', class:"input-group-field",
+      placeholder: 'Second surname' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :correo %>
-    <%= form.email_field :correo, id: :person_correo, :required => true,
-    :maxlength => 60, :size => 20 %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-info"></i>
+      </span>
+      <%= form.text_field :dni, id: :dni, :required => true,
+      :pattern => '\d{8,10}', class:"input-group-field",
+      placeholder: 'DNI' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :telefono %>
-    <%= form.telephone_field :telefono, id: :person_telefono,
-    :pattern => '\d{7,10}', :placeholder => "solo numeros", :maxlength => 10,
-    :minlength => 7%>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-envelope"></i>
+      </span>
+        <%= form.email_field :correo, id: :person_correo, :required => true,
+        :maxlength => 60, class:"input-group-field", placeholder: 'Email' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :direccion %>
-    <%= form.text_field :direccion, id: :person_direccion, :maxlength => 200,
-    :size => 30 %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-phone"></i>
+      </span>
+      <%= form.text_field :telefono, id: :telefono, 
+      :pattern => '\d{7,10}', :placeholder => "Phone or Celular", :maxlength => 10,
+    :minlength => 7, class:"input-group-field" %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-home"></i>
+      </span>
+      <%= form.text_field :direccion, id: :person_direccion, :maxlength => 200,
+      :size => 30, class:"input-group-field", placeholder: 'Address' %>
+    </div>
+  <button class="button expanded">Sign Up/Update</button>
+</form>
+
 <% end %>
