@@ -1,7 +1,7 @@
 class CreateRailcars < ActiveRecord::Migration[5.1]
   def change
     create_table :railcars do |t|
-      t.string :people_id, :limit => 10
+      t.integer :person_id, :limit => 20
       t.string :placa, :limit => 7
       t.string :marca, :limit => 20
       t.string :modelo, :limit => 20
