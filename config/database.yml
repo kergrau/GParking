@@ -48,10 +48,10 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  #adapter: postgresql
-  #encoding: utf8
-  #pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  <<: *default
+  adapter: postgresql
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  #<<: *default
   database: GParking_production
-  #username: GParking
-  #password: <%= ENV['GPARKING_DATABASE_PASSWORD'] %>
+  username: GParking
+  password: <%= ENV['GPARKING_DATABASE_PASSWORD'] %>
