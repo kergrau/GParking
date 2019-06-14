@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190419164617) do
+ActiveRecord::Schema.define(version: 2019_04_19_164617) do
 
-  create_table "invoice_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "invoice_details", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "invoices_id"
     t.string "ind_inicio"
     t.string "ind_fin"
-    t.float "ind_minutos", limit: 24
-    t.float "ind_valor", limit: 24
+    t.float "ind_minutos"
+    t.float "ind_valor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "invoices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "invoices", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "records_id", limit: 6
     t.string "in_number", limit: 6
     t.date "in_date"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20190419164617) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "people", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "nombre1", limit: 20
     t.string "nombre2", limit: 20
     t.string "apellido1", limit: 20
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20190419164617) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "prices", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.decimal "valor", precision: 10
     t.string "tipo_carro", limit: 10
     t.time "hora_inicio"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20190419164617) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "railcars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "railcars", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "people_id", limit: 10
     t.string "placa", limit: 7
     t.string "marca", limit: 20
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20190419164617) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "records", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "railcars_id", limit: 10
     t.datetime "horafinal"
     t.boolean "estado"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20190419164617) do
     t.string "spaces_id", limit: 7
   end
 
-  create_table "spaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "spaces", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "sp_floor", limit: 2
     t.integer "sp_number", limit: 3
     t.boolean "sp_state"
