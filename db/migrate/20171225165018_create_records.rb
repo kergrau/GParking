@@ -1,7 +1,7 @@
 class CreateRecords < ActiveRecord::Migration[5.1]
   def change
     create_table :records do |t|
-      t.integer :railcar_id, :limit => 8
+      t.string :railcar_id, :limit => 8
       t.integer :space_id, limit: 8
       t.datetime :horainicio
       t.datetime :horafinal

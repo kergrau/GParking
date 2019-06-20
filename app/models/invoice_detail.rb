@@ -31,14 +31,20 @@ class InvoiceDetail < ApplicationRecord
   def consulta(id)
     # Esta es la consulta que me permte traer los precios.
     # Trae los precios por rango horario
+    tipo = Railcar.select(:tipo).joins(:records).where("records.id", id)
     Record.connection.select_all(
-      "SELECT prices.valor, prices.hora_inicio, prices.hora_fin
-       FROM prices
-       WHERE prices.tipo_carro = (
-         SELECT railcars.tipo
-         FROM railcars INNER JOIN records ON railcars.id = records.railcars_id
-         WHERE records.id = #{id}) AND prices.estado = true
-         ORDER BY prices.hora_inicio ASC").to_hash
+      
+    #"SELECT prices.valor, prices.hora_inicio, prices.hora_fin
+    #   FROM prices
+    #   WHERE prices.tipo_carro = (
+    #     SELECT railcars.tipo
+    #     FROM railcars INNER JOIN records ON railcars.id = records.railcar_id
+    #     WHERE records.id = #{id}) AND prices.estado = true
+    #     ORDER BY prices.hora_inicio ASC").to_hash
+    "SELECT prices.valor, prices.hora_inicio, prices.hora_fin
+         FROM prices
+         WHERE prices.tipo_carro = '#{tipo[0]['tipo']}' AND prices.estado = true
+           ORDER BY prices.hora_inicio ASC").to_hash
   end
 
   def en_rango(con, contatiempo)
@@ -92,7 +98,7 @@ class InvoiceDetail < ApplicationRecord
 
   def detalle_factura(id, items)
     items.each do |item|
-      InvoiceDetail.create(invoices_id: id, ind_inicio: item[1],
+      InvoiceDetail.create(invoice_id: id, ind_inicio: item[1],
       ind_fin: item[2], ind_minutos: item[0], ind_valor: item[3])
     end
   end

@@ -17,7 +17,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create record" do
     assert_difference('Record.count') do
-      post records_url, params: { record: { estado: @record.estado, horafinal: @record.horafinal, railcars_id: @record.railcars_id } }
+      post records_url, params: { record: { estado: @record.estado, horafinal: @record.horafinal, railcar_id: @record.railcar_id } }
     end
 
     assert_redirected_to record_url(Record.last)
@@ -34,7 +34,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update record" do
-    patch record_url(@record), params: { record: { estado: @record.estado, horafinal: @record.horafinal, railcars_id: @record.railcars_id } }
+    patch record_url(@record), params: { record: { estado: @record.estado, horafinal: @record.horafinal, railcar_id: @record.railcar_id } }
     assert_redirected_to record_url(@record)
   end
 

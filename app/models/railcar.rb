@@ -1,16 +1,19 @@
 class Railcar < ApplicationRecord
+  has_many :records
   before_validation :dni_a_id, on: :create
   validates :placa, uniqueness: true
-  validates :people_id, presence: true
+  validates :person_id, presence: true
   after_validation :mayus_minus, :on => [:create, :update]
 
   def dni_a_id 
-    people_id = Person.select(Person.arel_table[:id]).
-    where(Person.arel_table[:dni].eq(self.people_id))
-    if people_id.blank?
-      self.people_id =''
+    #p person = Person.select(Person.arel_table[:id]).
+    #where(Person.arel_table[:dni].eq(person_id))
+    p person = Person.select(:id).where(dni: self.person_id)
+    p person[0]['id']
+    if person.blank?
+      self.person_id =''
     else
-      self.people_id = people_id[0]['id']
+      self.person_id = person[0]['id']
     end
   end
 

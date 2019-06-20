@@ -69,6 +69,6 @@ class RailcarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def railcar_params
-      params.require(:railcar).permit(:people_id, :placa, :marca, :modelo, :tipo)
+      params.require(:railcar).permit(:person_id, :placa, :marca, :modelo, :tipo)
     end
 end

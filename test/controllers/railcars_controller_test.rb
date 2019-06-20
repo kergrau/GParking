@@ -17,7 +17,7 @@ class RailcarsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create railcar" do
     assert_difference('Railcar.count') do
-      post railcars_url, params: { railcar: { marca: @railcar.marca, modelo: @railcar.modelo, people_id: @railcar.people_id, placa: @railcar.placa, tipo: @railcar.tipo } }
+      post railcars_url, params: { railcar: { marca: @railcar.marca, modelo: @railcar.modelo, person_id: @railcar.person_id, placa: @railcar.placa, tipo: @railcar.tipo } }
     end
 
     assert_redirected_to railcar_url(Railcar.last)
@@ -34,7 +34,7 @@ class RailcarsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update railcar" do
-    patch railcar_url(@railcar), params: { railcar: { marca: @railcar.marca, modelo: @railcar.modelo, people_id: @railcar.people_id, placa: @railcar.placa, tipo: @railcar.tipo } }
+    patch railcar_url(@railcar), params: { railcar: { marca: @railcar.marca, modelo: @railcar.modelo, person_id: @railcar.person_id, placa: @railcar.placa, tipo: @railcar.tipo } }
     assert_redirected_to railcar_url(@railcar)
   end
 

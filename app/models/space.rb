@@ -17,7 +17,7 @@ class Space < ApplicationRecord
   end
 
   def asignar_espacio(id)
-    spaces_id = Space.connection.select_all("
+    space_id = Space.connection.select_all("
       SELECT spaces.id
       FROM spaces
       WHERE spaces.sp_state = false and spaces.sp_type = (
@@ -25,7 +25,7 @@ class Space < ApplicationRecord
         FROM railcars
         WHERE railcars.id = #{id}
       ) LIMIT 1").to_hash
-    if spaces_id.blank? then nil else spaces_id[0]['id'] end
+    if space_id.blank? then nil else space_id[0]['id'] end
   end
 
   # Esto debe ser par las graficas

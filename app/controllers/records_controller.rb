@@ -1,12 +1,15 @@
 class RecordsController < ApplicationController
-  before_action :set_record, only: [:show, :edit, :update, :destroy, :take_out]
+  before_action :set_record, only: [:show, :edit, :update, :destroy]
 
   # GET /records
   # GET /records.json
   def index
-    @records = Record.select(:id, :placa, :estado, :railcars_id, :horainicio,
-    :horafinal).joins("INNER JOIN railcars ON railcars.id = 
-    records.railcars_id").where(estado: true)
+    #@records = Record.select(:id, :placa, :estado, :railcar_id, :horainicio,
+    #:horafinal).joins("INNER JOIN railcars ON railcars.id = 
+    #records.railcar_id").where(estado: true)
+
+    @records = Railcar.select("records.id", :placa, :estado, :railcar_id, :horainicio,
+    :horafinal).joins(:records).where("records.estado", true)
   end
 
   # GET /records/1
@@ -28,7 +31,7 @@ class RecordsController < ApplicationController
   def create
 
     @record = Record.new(record_params)
-
+    
     respond_to do |format|
       if @record.save      
         format.html { redirect_to @record, notice: 'Record was successfully created.' }
@@ -73,7 +76,7 @@ class RecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
-      params.require(:record).permit(:railcars_id, :horafinal, :estado,
+      params.require(:record).permit(:railcar_id, :horafinal, :estado,
         :horainicio)
     end
 end
