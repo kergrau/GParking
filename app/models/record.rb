@@ -15,13 +15,17 @@ class Record < ApplicationRecord
   after_create :crear_recordatorio_salida, on: :create, if: :tipo_fin
 
   def placa_a_id
-    railcar = Railcar.select(:id).where(placa: railcar_id)
-
-    if railcar.blank?
-      self.railcar_id = ''
-    else
-      self.railcar_id = railcar[0]['id']
+    p railcar = Railcar.select(:id).where(placa: railcar_id)
+    
+    if railcar.present?
+      #self.railcar_id = ''
+      p its_inside = Record.select(:id).where(railcar_id: railcar[0]['id'], estado: true)       
+      if its_inside.blank?
+        self.railcar_id = railcar[0]['id']
+        return self.railcar_id
+      end
     end
+    self.railcar_id = nil
   end
 
   def buscar_correo
@@ -107,8 +111,10 @@ class Record < ApplicationRecord
 
   def asignar_espacio
     space = Space.new
-    self.space_id = space.asignar_espacio(self.railcar_id)
-    space.ocupar_espacio(self.space_id) unless self.space_id.blank?
+    if self.railcar_id.present?
+      self.space_id = space.asignar_espacio(self.railcar_id)
+      space.ocupar_espacio(self.space_id) unless self.space_id.blank?
+    end
   end
 
   def notificar_espacio

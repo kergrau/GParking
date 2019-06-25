@@ -31,20 +31,20 @@ class InvoiceDetail < ApplicationRecord
   def consulta(id)
     # Esta es la consulta que me permte traer los precios.
     # Trae los precios por rango horario
-    tipo = Railcar.select(:tipo).joins(:records).where("records.id", id)
+    #tipo = Railcar.select(:tipo).joins(:records).where("records.id", id)
     Record.connection.select_all(
       
-    #"SELECT prices.valor, prices.hora_inicio, prices.hora_fin
-    #   FROM prices
-    #   WHERE prices.tipo_carro = (
-    #     SELECT railcars.tipo
-    #     FROM railcars INNER JOIN records ON railcars.id = records.railcar_id
-    #     WHERE records.id = #{id}) AND prices.estado = true
-    #     ORDER BY prices.hora_inicio ASC").to_hash
     "SELECT prices.valor, prices.hora_inicio, prices.hora_fin
-         FROM prices
-         WHERE prices.tipo_carro = '#{tipo[0]['tipo']}' AND prices.estado = true
-           ORDER BY prices.hora_inicio ASC").to_hash
+       FROM prices
+       WHERE prices.tipo_carro = (
+         SELECT railcars.tipo
+         FROM railcars INNER JOIN records ON railcars.id = CAST(records.railcar_id AS INTEGER)
+         WHERE records.id = #{id}) AND prices.estado = true
+         ORDER BY prices.hora_inicio ASC").to_hash
+    #"SELECT prices.valor, prices.hora_inicio, prices.hora_fin
+    #     FROM prices
+    #     WHERE prices.tipo_carro = '#{tipo[0]['tipo']}' AND prices.estado = true
+    #       ORDER BY prices.hora_inicio ASC").to_hash
   end
 
   def en_rango(con, contatiempo)

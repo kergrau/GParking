@@ -4,12 +4,13 @@ class RecordsController < ApplicationController
   # GET /records
   # GET /records.json
   def index
-    #@records = Record.select(:id, :placa, :estado, :railcar_id, :horainicio,
-    #:horafinal).joins("INNER JOIN railcars ON railcars.id = 
-    #records.railcar_id").where(estado: true)
+    @records = Record.select(:id, "railcars.placa", :estado, :railcar_id, :horainicio,
+    :horafinal).joins("INNER JOIN railcars ON railcars.id = 
+    CAST(records.railcar_id AS INTEGER)").where(estado: true)
+    
+    #@records = Railcar.select("records.id", :placa, :estado, :railcar_id, :horainicio,
+    #:horafinal).joins(:records).where("records.estado", true)
 
-    @records = Railcar.select("records.id", :placa, :estado, :railcar_id, :horainicio,
-    :horafinal).joins(:records).where("records.estado", true)
   end
 
   # GET /records/1

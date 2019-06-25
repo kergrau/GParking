@@ -9,7 +9,7 @@ class Railcar < ApplicationRecord
     #p person = Person.select(Person.arel_table[:id]).
     #where(Person.arel_table[:dni].eq(person_id))
     p person = Person.select(:id).where(dni: self.person_id)
-    p person[0]['id']
+    
     if person.blank?
       self.person_id =''
     else
