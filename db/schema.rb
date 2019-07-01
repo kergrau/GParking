@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_19_163007) do
+ActiveRecord::Schema.define(version: 2019_07_01_231306) do
 
   create_table "invoice_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "invoice_id"
@@ -27,6 +27,24 @@ ActiveRecord::Schema.define(version: 2019_04_19_163007) do
     t.string "in_number", limit: 6
     t.date "in_date"
     t.time "in_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ocupation_levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "parking_id"
+    t.decimal "ol_percent_pay", precision: 3, scale: 2
+    t.string "ol_level", limit: 2
+    t.decimal "ol_min", precision: 3, scale: 2
+    t.decimal "ol_max", precision: 3, scale: 2
+    t.string "ol_type_car", limit: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parkings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "par_name", limit: 20
+    t.string "par_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
