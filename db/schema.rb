@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_231306) do
+ActiveRecord::Schema.define(version: 2019_07_05_194537) do
 
   create_table "invoice_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "invoice_id"
@@ -31,13 +31,14 @@ ActiveRecord::Schema.define(version: 2019_07_01_231306) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ocupation_levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "levels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "parking_id"
-    t.decimal "ol_percent_pay", precision: 3, scale: 2
-    t.string "ol_level", limit: 2
-    t.decimal "ol_min", precision: 3, scale: 2
-    t.decimal "ol_max", precision: 3, scale: 2
-    t.string "ol_type_car", limit: 10
+    t.decimal "lev_percent_pay", precision: 3, scale: 2
+    t.string "lev_level", limit: 2
+    t.decimal "lev_min", precision: 3, scale: 2
+    t.decimal "lev_max", precision: 3, scale: 2
+    t.string "lev_type_car", limit: 10
+    t.boolean "lev_state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_231306) do
     t.string "par_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "par_state"
   end
 
   create_table "people", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -91,6 +93,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_231306) do
     t.string "rec_type", limit: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "level_id"
   end
 
   create_table "spaces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

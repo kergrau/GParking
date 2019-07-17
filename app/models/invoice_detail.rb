@@ -6,50 +6,51 @@ class InvoiceDetail < ApplicationRecord
   def recolectar(elemento, colector)
     colector.each do |col|
       if col.include? elemento[1]
-        col[0] += elemento[0] #sumatoria de minutos
-        col[3] += elemento[3] #sumatoria de valor
+        col[0] += elemento[0] # sumatoria de minutos
+        col[3] += elemento[3] # sumatoria de valor
         return
       end
-    #p "Entro a metodo."
+      # p "Entro a metodo."
     end
     colector.push(elemento) if colector.empty? || true
   end
 
-  def segs (inicio, final)
-    Time.parse(final.strftime("%H:%M:%S")) -
-    Time.parse(inicio.strftime("%H:%M:%S"))
+  def segs(inicio, final)
+    Time.parse(final.strftime('%H:%M:%S')) -
+      Time.parse(inicio.strftime('%H:%M:%S'))
   end
 
   def to_min(segs)
     segs / 60
   end
 
-  def cobro (minutos, precio)
+  def cobro(minutos, precio)
     minutos * precio
   end
 
   def consulta(id)
     # Esta es la consulta que me permte traer los precios.
     # Trae los precios por rango horario
-    #tipo = Railcar.select(:tipo).joins(:records).where("records.id", id)
+    # tipo = Railcar.select(:tipo).joins(:records).where("records.id", id)
     Record.connection.select_all(
-      
-    "SELECT prices.valor, prices.hora_inicio, prices.hora_fin
-       FROM prices
-       WHERE prices.tipo_carro = (
-         SELECT railcars.tipo
-         FROM railcars INNER JOIN records ON railcars.id = CAST(records.railcar_id AS INTEGER)
-         WHERE records.id = #{id}) AND prices.estado = true
-         ORDER BY prices.hora_inicio ASC").to_hash
-    #"SELECT prices.valor, prices.hora_inicio, prices.hora_fin
+
+      "SELECT prices.valor, prices.hora_inicio, prices.hora_fin
+         FROM prices
+         WHERE prices.tipo_carro = (
+           SELECT railcars.tipo
+           FROM railcars INNER JOIN records ON railcars.id = CAST(records.railcar_id AS INTEGER)
+           WHERE records.id = #{id}) AND prices.estado = true
+           ORDER BY prices.hora_inicio ASC"
+    ).to_hash
+    # "SELECT prices.valor, prices.hora_inicio, prices.hora_fin
     #     FROM prices
     #     WHERE prices.tipo_carro = '#{tipo[0]['tipo']}' AND prices.estado = true
     #       ORDER BY prices.hora_inicio ASC").to_hash
   end
 
   def en_rango(con, contatiempo)
-    if con['hora_inicio'].strftime("%H:%M") <= contatiempo.strftime("%H:%M") &&
-      contatiempo.strftime("%H:%M") <= con['hora_fin'].strftime("%H:%M")
+    if con['hora_inicio'].strftime('%H:%M') <= contatiempo.strftime('%H:%M') &&
+      contatiempo.strftime('%H:%M') <= con['hora_fin'].strftime('%H:%M')
       return true
     else
       return false
@@ -57,9 +58,9 @@ class InvoiceDetail < ApplicationRecord
   end
 
   def finalizador(con, horafinal, contatiempo)
-    if con['hora_inicio'].strftime("%H:%M") <= horafinal.strftime("%H:%M") &&
-       horafinal.strftime("%H:%M") <= con['hora_fin'].strftime("%H:%M") &&
-       contatiempo.strftime("%Y-%m-%d") == horafinal.strftime("%Y-%m-%d")
+    if con['hora_inicio'].strftime('%H:%M') <= horafinal.strftime('%H:%M') &&
+       horafinal.strftime('%H:%M') <= con['hora_fin'].strftime('%H:%M') &&
+       contatiempo.strftime('%Y-%m-%d') == horafinal.strftime('%Y-%m-%d')
        return true
      else
        return false
@@ -67,32 +68,36 @@ class InvoiceDetail < ApplicationRecord
   end
 
   def iterador_horario(totalti, contatiempo, sum_precio, items,
-     consulta, final)
+                       consulta, final)
     consulta.each do |con|
       if en_rango(con, contatiempo)
         if finalizador(con, final, contatiempo)
           p segundos = segs(contatiempo, final)
           cobrar = cobro(to_min(segundos), con['valor'].to_f)
           recolectar(detalle(to_min(segundos), con['hora_inicio'],
-          con['hora_fin'], cobrar), items)
+                             con['hora_fin'], cobrar), items)
           p "restando al tiempo #{totalti -= segundos}"
-          return "Valor total #{sum_precio + cobrar}", items
+          sum_precio += cobrar
+          return sum_precio
         else
           segundos = segs(contatiempo, con['hora_fin']) + 1
-          sum_precio = sum_precio + cobro(to_min(segundos), con['valor'].to_f)
-          contatiempo = contatiempo + segundos
+          sum_precio += cobro(to_min(segundos), con['valor'].to_f)
+          contatiempo += segundos
           p "restando al tiempo #{totalti -= segundos}"
           recolectar(detalle(to_min(segundos), con['hora_inicio'],
-          con['hora_fin'], cobro(to_min(segundos), con['valor'].to_f)),
-          items)
+                             con['hora_fin'], cobro(to_min(segundos),
+                                                    con['valor'].to_f)),
+                     items)
         end
       else
-        puts "No entro."
-      end # Si la hora de inicio esta en el rango
-    end # Iterador de la consulta
+        puts 'No entro.'
+      end
+      # Si la hora de inicio esta en el rango
+    end
+    # Iterador de la consulta
     if totalti > 0
       iterador_horario(totalti, contatiempo, sum_precio, items,
-       consulta, final)
+                       consulta, final)
     end
   end
 

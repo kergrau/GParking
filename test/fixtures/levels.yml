@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parking_id: 1
+  lev_percent_pay: 9.99
+  lev_level: MyString
+  lev_min: 9.99
+  lev_max: 9.99
+  lev_type_car: MyString
+  lev_state: false
+
+two:
+  parking_id: 1
+  lev_percent_pay: 9.99
+  lev_level: MyString
+  lev_min: 9.99
+  lev_max: 9.99
+  lev_type_car: MyString
+  lev_state: false

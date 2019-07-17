@@ -1,2 +1,0 @@
-class OcupationLevel < ApplicationRecord
-end

@@ -12,10 +12,19 @@
     <% @items.each do |elemento|%>
       <strong> <%= elemento[0].round %> minutos </strong>
       <strong> <%= "En el horario de #{elemento[1]} a
-      #{elemento[2]}"%> <strong> <br>
+      #{elemento[2]}"%> </strong> <br>
       <strong> <%= "Esto te costo #{elemento[3].round}"%> </strong>
       <br>
     <% end %>
+    <br>
+
+    <p>Others issues</p>
+    <br>
+    <p>Level ocupation = <%= @level_ocupation_tax %></p>
+    <p>Reservation = <%= @reservation_tax %></p>
+    <br>
+    <h3>Total = <%= @sum_precio + @level_ocupation_tax +
+    @reservation_tax %></h3>
 
     <p>Have a great day and see you soon!</p>
 

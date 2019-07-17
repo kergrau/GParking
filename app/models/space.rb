@@ -1,3 +1,4 @@
+# With thiss class y managment spaces.
 class Space < ApplicationRecord
 
   def ocupar_espacio(id)
@@ -8,7 +9,7 @@ class Space < ApplicationRecord
   def notificar_ocupacion(correo, id)
     spaces = numero_espacio(id)
     YourSpaceMailer.your_parking(correo, spaces.sp_number,
-    spaces.sp_floor).deliver_later
+                                 spaces.sp_floor).deliver_later
   end
 
   def desocupar_espacio(id)
@@ -25,7 +26,7 @@ class Space < ApplicationRecord
         FROM railcars
         WHERE railcars.id = #{id}
       ) LIMIT 1").to_hash
-    if space_id.blank? then nil else space_id[0]['id'] end
+    space_id.blank? ? nil : space_id[0]['id']
   end
 
   # Esto debe ser par las graficas
@@ -44,6 +45,32 @@ class Space < ApplicationRecord
 
   def espacios_ocupados_motos
     Space.where(sp_state: true, sp_type: 'MOTO').count
+  end
+
+  def espacios_total_motos
+    Space.where(sp_type: 'MOTO').count
+  end
+
+  def espacios_total_carros
+    Space.where(sp_type: 'CARRO').count
+  end
+
+  def porcentaje_carros
+    p (espacios_ocupados_carros.to_f / espacios_total_carros.to_f) * 100
+  end
+
+  def porcentaje_motos
+    (espacios_ocupados_motos.to_f / espacios_total_motos.to_f) * 100
+  end
+
+  def nivel_ocupacion
+    porcentaje = porcentaje_carros
+    p nivel = Level.select(:id).where(
+      "levels.lev_min <= #{porcentaje}", "levels.lev_max >= #{porcentaje}",
+      lev_state: true
+    )
+
+    nivel.blank? ? 0 : nivel[0]['id']
   end
 
   def numero_espacio(id)

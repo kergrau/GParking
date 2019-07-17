@@ -6,10 +6,10 @@ class Railcar < ApplicationRecord
   after_validation :mayus_minus, :on => [:create, :update]
 
   def dni_a_id 
-    #p person = Person.select(Person.arel_table[:id]).
-    #where(Person.arel_table[:dni].eq(person_id))
+    # p person = Person.select(Person.arel_table[:id]).
+    # where(Person.arel_table[:dni].eq(person_id))
     p person = Person.select(:id).where(dni: self.person_id)
-    
+
     if person.blank?
       self.person_id =''
     else
