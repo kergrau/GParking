@@ -5,6 +5,7 @@ class Record < ApplicationRecord
   validates :railcar_id, presence: { message: "Numero de placa inexistente
   o en blanco" }, on: :create
   before_update :facturacion, unless: :reservation_cancel?
+  before_update :desasignar_espacio
   after_validation :tipo_reserva, on: :create
   before_validation :placa_a_id, on: :create
   before_validation :asignar_espacio, on: :create, unless: :tipo_inicio
@@ -46,7 +47,7 @@ class Record < ApplicationRecord
 
   def facturacion
     unless self.estado
-      desasignar_espacio
+      # desasignar_espacio
       contatiempo = self.horainicio
       hora_fin unless tipo_fin
       totalti = (self.horafinal - contatiempo)
@@ -153,8 +154,10 @@ class Record < ApplicationRecord
   end
 
   def desasignar_espacio
-    space = Space.new
-    space.desocupar_espacio(self.space_id)
+    unless estado
+      space = Space.new
+      space.desocupar_espacio(self.space_id)
+    end
   end
 
   # Reserva maximo con 4 horas de anticipacion.
