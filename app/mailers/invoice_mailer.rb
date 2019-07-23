@@ -5,7 +5,7 @@ class InvoiceMailer < ApplicationMailer
     port: 587,
     domain: 'example.com',
     user_name: 'synapkg@outlook.com',
-    password: '20-10-2018.A',
+    password: '20.10.2018.A;',
     authentication: 'login',
     enable_starttls_auto: true
   }
