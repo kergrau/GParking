@@ -9,14 +9,7 @@
             integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
             crossorigin=""/>
       <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-      <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet' />
-      <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-              integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-              crossorigin=""></script>
-      <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-      <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
-
-  </head>
+    </head>
 <body>
 
 <div class="top-bar">
@@ -46,26 +39,19 @@
     <%= render "records/record" %>
     <%= link_to 'Enter Car', new_record_path %>
     <div id="mapid">
-
+      <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+              integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+              crossorigin=""></script>
+      <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
       <script type="text/javascript" charset="utf-8">
         createMap();
-          //allOne();
       </script>
     </div>
     <br>
 
-
-    <div id='map'>
-      <script type="text/javascript" charset="utf-8">
-          allOne();
-      </script>
-    </div>
-
   </div>
   <%= render "welcome/side_ocupation" %>
 </div>
-
-
 
 
 

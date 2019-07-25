@@ -29,13 +29,3 @@ function createMap() {
     }).addTo(mymap());
     L.Control.geocoder().addTo(mymap());
 }
-
-function allOne() {
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic3luYXBrZyIsImEiOiJjanlhcHZ5c3EwMTU1M21yd2YwZTNzdWkzIn0.YteazFgKGN-GPb2yS2tPWA';
-    var map = new mapboxgl.Map({
-        container: 'map', // container id
-        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-        center: [-74.50, 40], // starting position [lng, lat]
-        zoom: 9 // starting zoom
-    });
-}
