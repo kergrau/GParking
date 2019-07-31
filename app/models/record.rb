@@ -61,9 +61,9 @@ class Record < ApplicationRecord
                                  self.horafinal)
 
       in_detail.detalle_factura(invoice.buscar_factura(self.id), items)
-      InvoiceMailer.welcome_email(buscar_correo, items,
-                                  sum_precio, tax_level(level_id),
-                                  reservation_tax(rec_type)).deliver_later
+     # InvoiceMailer.welcome_email(buscar_correo, items,
+     #                             sum_precio, tax_level(level_id),
+     #                             reservation_tax(rec_type)).deliver_later
     end
   end
 
@@ -98,11 +98,11 @@ class Record < ApplicationRecord
     placa = Railcar.select(:placa).where(id: railcar_id)
     espacio = Space.select(:sp_number, :sp_floor).where(id: space_id)
 
-    YourSpaceMailer.exit_reminder_mail(self.horafinal.to_s, buscar_correo,
-                                       placa[0].placa, espacio[0].sp_number,
-                                       espacio[0].sp_floor).deliver_later(
-                                         wait_until: tiempo_salida.minutes.from_now
-)
+    #YourSpaceMailer.exit_reminder_mail(self.horafinal.to_s, buscar_correo,
+    #                                   placa[0].placa, espacio[0].sp_number,
+    #                                   espacio[0].sp_floor).deliver_later(
+    #                                     wait_until: tiempo_salida.minutes.from_now)
+
   end
 
   def horas

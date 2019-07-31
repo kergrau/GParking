@@ -8,7 +8,6 @@
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
             integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
             crossorigin=""/>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     </head>
 <body>
 
@@ -32,28 +31,79 @@
     <h1>Welcome to GParking</h1>
   </div>
 </div>
+
 <div class="row" id="content">
   <div class="medium-8 columns">
 
 
     <%= render "records/record" %>
     <%= link_to 'Enter Car', new_record_path %>
+
     <div id="mapid">
       <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
               integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
               crossorigin=""></script>
-      <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
       <script type="text/javascript" charset="utf-8">
-        createMap();
+
+          var mymap = L.map('mapid').setView([11.000000, -74.806984], 13);
+
+          createMap(mymap);
+
+          //markers(mymap);
+          /*
+          var popup = L.popup()
+              .setLatLng([11.000000, -74.806984])
+              .setContent("I am a standalone popup.")
+              .openOn(mymap);
+
+
+          var popup = L.marker();
+
+          function onMapClick(e) {
+              popup
+                  .setLatLng(e.latlng)
+                  .addTo(mymap)
+                  .openOn(mymap);
+          }
+
+          mymap.on('click', onMapClick);
+          */
+          //createMap(mymap());
       </script>
+
     </div>
     <br>
 
+    <% markers = Parking.select(:id, :par_name, :par_latitude, :par_longitude).where(
+        par_state: true) %>
+    <% markers.each do |m| %>
+      <% popcarro = Price.connection.select_all(
+          "SELECT prices.tipo_carro, prices.hora_inicio, prices.hora_fin, prices.valor
+         FROM prices INNER JOIN parkings ON prices.parking_id = parkings.id
+         WHERE prices.estado = true AND parkings.id = #{m['id']} AND
+         prices.tipo_carro = 'CARRO' AND
+          prices.hora_inicio <= '#{Time.now.strftime('%H:%M:%S')}' AND
+           prices.hora_fin >= '#{Time.now.strftime('%H:%M:%S')}'"
+      ).to_hash %>
+
+      <script>
+          markers(`<%= popcarro[0]['tipo_carro'] %>`,
+                  `<%= popcarro[0]['valor'] %>`,
+                  `<%= popcarro[0]['hora_inicio'].strftime('%H:%M:%S') %>`,
+                  `<%= popcarro[0]['hora_fin'].strftime('%H:%M:%S') %>`,
+                  `<%= m['par_name']%>`,
+                  `<%= m['par_latitude'].to_f %>`,
+                  `<%=m['par_longitude'].to_f%>`, mymap);
+      </script>
+
+    <% end %>
+
   </div>
+
   <%= render "welcome/side_ocupation" %>
+
 </div>
-
-
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
