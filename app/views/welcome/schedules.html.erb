@@ -1,0 +1,22 @@
+
+<table>
+  <thead>
+  <tr>
+    <th>Inicio</th>
+    <th>Fin</th>
+    <th>Vehiculo</th>
+    <th>Valor</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @parking.each do |parking| %>
+    <tr>
+      <td><%= parking.hora_inicio.strftime('%H:%M:%S') %></td>
+      <td><%= parking.hora_fin.strftime('%H:%M:%S') %></td>
+      <td><%= parking.tipo_carro %></td>
+      <td><%= parking.valor %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

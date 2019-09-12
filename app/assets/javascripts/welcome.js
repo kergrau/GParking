@@ -1,6 +1,4 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-// You can use CoffeeScript in this file: http://coffeescript.org/
+
 function WelcomeView() {
   $("[data-clipped-circle-graph]").each(function() {
     var $graph = $(this),
@@ -15,7 +13,6 @@ function WelcomeView() {
     
 }
 
-
 function createMap(mymap) {
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -26,24 +23,23 @@ function createMap(mymap) {
     }).addTo(mymap);
 
 }
-/*
-function markers(parking, type, value, latitude, longitude, mymap) {
-    var marker = L.marker([latitude,longitude]).addTo(mymap);
-    popup(parking, type, value, marker);
-}
-*/
 
-function markers(type, value, start, end, name, latitude, longitude, mymap) {
+function markers(type, value, start, end, schedules,
+                 name, latitude, longitude, mymap) {
     var marker = L.marker([latitude,longitude]).addTo(mymap);
-    popup(type, value, start, end, name, marker);
+    popup(type, value, start, end, schedules, name, marker);
 }
 
-function popup(type, value, start, end, name, marker) {
-    string = `<pre style="text-align: center; font-weight: bold;
+function popup(type, value, start, end, schedules, name, marker) {
+
+    string = `
+<pre style="text-align: center; font-weight: bold;
               background-color: white">${name}</pre>
               <b>${type}: </b>${value} $/min<br>
-              <b>Starts: </b>${start}
-              <b>Ends: </b>${end}`;
+              <b>${schedules}: </b>${start} - ${end}`;
 
     marker.bindPopup(string);
 }
+
+
+

@@ -1,0 +1,68 @@
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+</head>
+<%= form_with(model: parking, local: true) do |form| %>
+  <% if parking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(parking.errors.count, "error") %>
+        prohibited this railcar from being saved:</h2>
+
+      <ul>
+        <% parking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form>
+    <div class="form-icons">
+
+      <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+        <%= form.text_field :par_name, required: true, placeholder: 'Parking Name',
+           maxlength: 10, minlength: 8, class:"input-group-field" %>
+      </div>
+
+      <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+        <%= form.text_field :par_address, required: true,
+                            placeholder: 'Parking Address', maxlength: 10,
+                            minlength: 8, class:"input-group-field" %>
+      </div>
+
+      <input required="required" class="input-group-field" type="hidden"
+             id="latitude" name="parking[par_latitude]" value="" />
+
+      <input required="required" class="input-group-field" type="hidden"
+             id="longitude" name="parking[par_longitude]" value="" />
+
+
+      <div id="mapid">
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+                integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+                crossorigin=""></script>
+
+        <script type="text/javascript" charset="utf-8">
+
+            var mymap = L.map('mapid').setView([11.000000, -74.806984], 13);
+
+            createMap(mymap);
+            var popup = L.popup();
+            var coordinate = {};
+            mymap.on('click', onMapClick);
+
+        </script>
+
+      </div>
+      <br>
+      <button class="button expanded">Sign Up/Update</button>
+    </div>
+  </form>
+<% end %>

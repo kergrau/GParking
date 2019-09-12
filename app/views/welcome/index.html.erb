@@ -50,52 +50,49 @@
 
           createMap(mymap);
 
-          //markers(mymap);
-          /*
-          var popup = L.popup()
-              .setLatLng([11.000000, -74.806984])
-              .setContent("I am a standalone popup.")
-              .openOn(mymap);
-
-
-          var popup = L.marker();
-
-          function onMapClick(e) {
-              popup
-                  .setLatLng(e.latlng)
-                  .addTo(mymap)
-                  .openOn(mymap);
-          }
-
-          mymap.on('click', onMapClick);
-          */
-          //createMap(mymap());
       </script>
 
     </div>
     <br>
 
-    <% markers = Parking.select(:id, :par_name, :par_latitude, :par_longitude).where(
-        par_state: true) %>
+    <% markers = Parking.select(:id, :par_name, :par_latitude, :par_longitude).distinct.
+        joins(:prices, :spaces).where(par_state: true) %>
     <% markers.each do |m| %>
       <% popcarro = Price.connection.select_all(
-          "SELECT prices.tipo_carro, prices.hora_inicio, prices.hora_fin, prices.valor
-         FROM prices INNER JOIN parkings ON prices.parking_id = parkings.id
-         WHERE prices.estado = true AND parkings.id = #{m['id']} AND
-         prices.tipo_carro = 'CARRO' AND
-          prices.hora_inicio <= '#{Time.now.strftime('%H:%M:%S')}' AND
-           prices.hora_fin >= '#{Time.now.strftime('%H:%M:%S')}'"
+          "SELECT prices.tipo_carro, prices.hora_inicio, prices.hora_fin,
+             prices.valor
+           FROM prices INNER JOIN parkings ON prices.parking_id = parkings.id
+           WHERE prices.estado = true AND parkings.id = #{m['id']} AND
+             prices.tipo_carro = 'CARRO' AND
+             prices.hora_inicio <= '#{Time.now.strftime('%H:%M:%S')}' AND
+             prices.hora_fin >= '#{Time.now.strftime('%H:%M:%S')}'"
       ).to_hash %>
 
       <script>
+
           markers(`<%= popcarro[0]['tipo_carro'] %>`,
                   `<%= popcarro[0]['valor'] %>`,
                   `<%= popcarro[0]['hora_inicio'].strftime('%H:%M:%S') %>`,
                   `<%= popcarro[0]['hora_fin'].strftime('%H:%M:%S') %>`,
+                  `<%= link_to 'Horario', schedule_path(m['id']), target: "_blank" %>` ,
                   `<%= m['par_name']%>`,
                   `<%= m['par_latitude'].to_f %>`,
-                  `<%=m['par_longitude'].to_f%>`, mymap);
+                  `<%= m['par_longitude'].to_f%>`, mymap);
+
+
       </script>
+
+<!--
+        <div class="reveal" id="exampleModal1" data-reveal>
+          <%#park = Price.select(:tipo_carro, :hora_inicio, :hora_fin, :valor).where(
+              estado: true, parking_id: m['id']) %>
+
+        <%# render template: "welcome/schedules", locals: {parking: park} %>
+          <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        -->
 
     <% end %>
 

@@ -141,7 +141,7 @@ class Record < ApplicationRecord
     space = Space.new
     if self.railcar_id.present?
       self.level_id = space.nivel_ocupacion
-      self.space_id = space.asignar_espacio(self.railcar_id)
+      self.space_id = space.asignar_espacio(self.railcar_id, space_id)
       # ReservationsJob.set(wait: (self.horainicio - Time.now).seconds
       # ).perform_later(self.space_id) if tipo_inicio
       space.ocupar_espacio(self.space_id) unless self.space_id.blank?

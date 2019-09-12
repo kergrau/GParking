@@ -21,6 +21,7 @@ class RecordsController < ApplicationController
   # GET /records/new
   def new
     @record = Record.new
+    @parking = Parking.select(:id, :par_name).where(par_state: true)
   end
 
   # GET /records/1/edit
@@ -78,6 +79,6 @@ class RecordsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
       params.require(:record).permit(:railcar_id, :horafinal, :estado,
-        :horainicio)
+        :horainicio, :space_id)
     end
 end

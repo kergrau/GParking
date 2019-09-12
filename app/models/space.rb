@@ -1,5 +1,6 @@
 # With thiss class y managment spaces.
 class Space < ApplicationRecord
+  belongs_to :parking
 
   def ocupar_espacio(id)
     space = Space.find_by(id: id)
@@ -17,11 +18,12 @@ class Space < ApplicationRecord
     space.update(sp_state: false)
   end
 
-  def asignar_espacio(id)
+  def asignar_espacio(id, parking)
     space_id = Space.connection.select_all("
       SELECT spaces.id
       FROM spaces
-      WHERE spaces.sp_state = false and spaces.sp_type = (
+      WHERE spaces.sp_state = false AND spaces.parking_id = #{parking} AND
+       spaces.sp_type = (
         SELECT railcars.tipo
         FROM railcars
         WHERE railcars.id = #{id}
