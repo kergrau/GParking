@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Par name:</strong>
+  <%= @parking.par_name %>
+</p>
+
+<p>
+  <strong>Par address:</strong>
+  <%= @parking.par_address %>
+</p>
+
+<p>
+  <strong>Par state:</strong>
+  <%= @parking.par_state %>
+</p>
+
+<p>
+  <strong>Par latitude:</strong>
+  <%= @parking.par_latitude %>
+</p>
+
+<p>
+  <strong>Par longitude:</strong>
+  <%= @parking.par_longitude %>
+</p>
+
+<%= link_to 'Edit', edit_parking_path(@parking) %> |
+<%= link_to 'Back', parkings_path %>

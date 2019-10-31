@@ -2,26 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f625c8e4-787a-48d7-b7ad-986e1ba5a8c4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/parkings/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/parkings/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/welcome/schedules.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.generators" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/javascripts/welcome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/people_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/people_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/records_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/records_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/parking.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/parking.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/price.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/price.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/record.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/record.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/space.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/space.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/people/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/people/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/railcars/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/railcars/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/records/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/records/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/parkings.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/parkings.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/parkings.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/parkings_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/parkings_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/parkings/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/parkings/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/parkings/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/parkings/new.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190701224001_create_parkings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/parkings_controller_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/parkings_controller_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/parkings.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/fixtures/parkings.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -211,7 +202,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" />
+  <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="false" RAILS_SPRING_PRE_LOADER_OPTION="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -289,6 +280,10 @@
       <workItem from="1566925306560" duration="8788000" />
       <workItem from="1567093258712" duration="2484000" />
       <workItem from="1567113459763" duration="1725000" />
+      <workItem from="1568665315957" duration="2032000" />
+      <workItem from="1571776232830" duration="675000" />
+      <workItem from="1572474372310" duration="321000" />
+      <workItem from="1572535593229" duration="3434000" />
     </task>
     <servers />
   </component>

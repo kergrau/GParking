@@ -3,7 +3,13 @@
 one:
   par_name: MyString
   par_address: MyString
+  par_state: false
+  par_latitude: MyString
+  par_longitude: MyString
 
 two:
   par_name: MyString
   par_address: MyString
+  par_state: false
+  par_latitude: MyString
+  par_longitude: MyString

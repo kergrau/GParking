@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
+  resources :parkings
   root 'welcome#index'
   get '/schedules/:id', to: 'welcome#schedules', as: 'schedule'
-  get '/parkings/new', to: 'parkings#new', as: 'new_parking'
-  get '/parkings', to: 'parkings#index', as: 'parkings'
-  post '/parkings', to: 'parkings#create'
   resources :prices
   resources :records
   resources :railcars
