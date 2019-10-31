@@ -13,4 +13,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-//= require welcome 
+//= require welcome
+//= require parkings

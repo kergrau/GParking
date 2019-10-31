@@ -1,0 +1,227 @@
+/* line 1, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  margin: 33px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 10, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 16, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 22, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+a {
+  color: #000;
+}
+/* line 25, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+a:visited {
+  color: #666;
+}
+/* line 29, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 35, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+th {
+  padding-bottom: 5px;
+}
+
+/* line 39, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+td {
+  padding: 0 5px 7px;
+}
+
+/* line 44, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 49, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 53, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 59, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 66, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 76, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 82, /home/grau/Documents/GParking/app/assets/stylesheets/scaffolds.scss */
+label {
+  display: block;
+}
+/* line 5, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.clipped-circle-graph {
+  width: 11.25rem;
+  height: 11.25rem;
+  border-radius: 50%;
+  background-color: #8a8a8a;
+  position: relative;
+}
+
+/* line 13, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.clipped-circle-graph.gt-50 {
+  background-color: #1779ba;
+}
+
+/* line 17, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.clipped-circle-graph:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: 19px;
+  background: #e6e6e6;
+  height: 5rem;
+  width: 5rem;
+  z-index: 3;
+  -webkit-transform: rotate(45deg) translate3d(0, 0, 0);
+  transform: rotate(45deg) translate3d(0, 0, 0);
+  -webkit-transform-origin: -30px 15px;
+  transform-origin: -30px 15px;
+}
+
+/* line 36, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.clipped-circle-graph-progress {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 5.625rem);
+  top: calc(50% - 5.625rem);
+  width: 11.25rem;
+  height: 11.25rem;
+  clip: rect(0, 11.25rem, 11.25rem, 5.625rem);
+  -webkit-transform: rotate(-180deg) perspective(0);
+  transform: rotate(-180deg) perspective(0);
+}
+
+/* line 49, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.clipped-circle-graph-progress .clipped-circle-graph-progress-fill {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 5.625rem);
+  top: calc(50% - 5.625rem);
+  width: 11.25rem;
+  height: 11.25rem;
+  clip: rect(0, 5.625rem, 11.25rem, 0);
+  background: #1779ba;
+  -webkit-transform: rotate(60deg);
+  transform: rotate(60deg);
+}
+
+/* line 64, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.gt-50 .clipped-circle-graph-progress {
+  clip: rect(0, 5.625rem, 11.25rem, 0);
+}
+
+/* line 68, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.gt-50 .clipped-circle-graph-progress .clipped-circle-graph-progress-fill {
+  clip: rect(0, 11.25rem, 11.25rem, 5.625rem);
+  background: #8a8a8a;
+}
+
+/* line 73, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.clipped-circle-graph-percents {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - 7.75862rem/2);
+  top: calc(50% - 7.75862rem/2);
+  width: 7.75862rem;
+  height: 7.75862rem;
+  background: #e6e6e6;
+  text-align: center;
+  display: table;
+  z-index: 4;
+}
+
+/* line 87, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.clipped-circle-graph-percents .clipped-circle-graph-percents-number {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1779ba;
+}
+
+/* line 94, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.clipped-circle-graph-percents .clipped-circle-graph-percents-units {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* line 100, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.clipped-circle-graph-percents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+/* line 106, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+.clipped-circle-graph-percents-wrapper span {
+  line-height: 1;
+}
+
+/* line 110, /home/grau/Documents/GParking/app/assets/stylesheets/welcome.scss */
+#mapid {
+  height: 480px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
