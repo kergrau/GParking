@@ -11,6 +11,5 @@ class CreateLevels < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    # add_column :parkings, :par_state, :boolean
   end
 end
