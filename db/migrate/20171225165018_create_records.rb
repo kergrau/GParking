@@ -7,6 +7,7 @@ class CreateRecords < ActiveRecord::Migration[5.1]
       t.datetime :horafinal
       t.boolean :estado
       t.string :rec_type, :limit => 1
+      t.integer :level_id
 
       t.timestamps
     end

@@ -6,6 +6,7 @@ class CreatePrices < ActiveRecord::Migration[5.1]
       t.time :hora_inicio
       t.time :hora_fin
       t.boolean :estado
+      t.integer :parking_id
 
       t.timestamps
     end
