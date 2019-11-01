@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f625c8e4-787a-48d7-b7ad-986e1ba5a8c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20171225165018_create_records.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20171225165018_create_records.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20180107154836_create_prices.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20180107154836_create_prices.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190419163007_create_spaces.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190419163007_create_spaces.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190705194537_levelid.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190726184322_add_lat_lon.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190726223134_add_parkingid_price.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/records/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/records/_form.html.erb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -280,7 +275,7 @@
       <workItem from="1571776232830" duration="675000" />
       <workItem from="1572474372310" duration="321000" />
       <workItem from="1572535593229" duration="8859000" />
-      <workItem from="1572622377165" duration="1142000" />
+      <workItem from="1572622377165" duration="3765000" />
     </task>
     <servers />
   </component>

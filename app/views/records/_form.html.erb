@@ -42,17 +42,21 @@
     </div>
 
     <div class="input-group">
-      <%= form.select(:space_id) do %>
-        <% @parking.each do |p| %>
-          <%= content_tag(:option, p.par_name, value: p.id) %>
-        <% end %>
-      <% end %>
+
+      <span class="input-group-label">
+        <i class="fa fa-car"></i>
+      </span>
+      <%= form.text_field :space_id, id: :space_id,
+                          :required => true, :maxlength => 7, :minlength => 5,
+                          class:"input-group-field", placeholder: 'ID Parking' %>
+
     </div>
 
     <div class="field">
       <%= form.label :estado %>
       <%= form.check_box :estado, id: :record_estado, :checked => true %>
     </div>
+
   </div>
   <button class="button expanded">Sign Up/Update</button>
 </form>
