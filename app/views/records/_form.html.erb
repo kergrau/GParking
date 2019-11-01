@@ -43,7 +43,7 @@
 
     <div class="input-group">
       <%= form.select(:space_id) do %>
-        <%= @parking.each do |p| %>
+        <% @parking.each do |p| %>
           <%= content_tag(:option, p.par_name, value: p.id) %>
         <% end %>
       <% end %>

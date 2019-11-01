@@ -37,6 +37,11 @@
                             minlength: 8, class:"input-group-field" %>
       </div>
 
+      <div class="field">
+        <% form.label :Estado %>
+        <% form.check_box :par_state, :checked => true %>
+      </div>
+
       <input required="required" class="input-group-field" type="hidden"
              id="latitude" name="parking[par_latitude]" value="" />
 
