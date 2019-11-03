@@ -68,6 +68,8 @@
              prices.hora_fin >= '#{Time.now.strftime('%H:%M:%S')}'"
       ).to_hash %>
 
+      <%= popcarro[0]['hora_inicio'].strftime('%H:%M:%S') %>
+
       <script>
 
           markers(`<%= popcarro[0]['tipo_carro'] %>`,
